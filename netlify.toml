@@ -1,0 +1,8 @@
+[[redirects]]
+from = "/*"
+to = "/index.html"
+<<<<<<< HEAD
+status = 200
+=======
+status = 200
+>>>>>>> 21b9134a22af7d4782b49fef5cc5969cdd1964fd
