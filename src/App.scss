@@ -1,0 +1,123 @@
+#App {
+	position: relative;
+	background-color: #161b22;
+	min-height: 100vh;
+  }
+  
+  $primary: #21262c;
+  $secondary: #fde1b8;
+  $success: #e5f5aa;
+  $info: #161b22;
+  $warning: #f3f0c8;
+  $danger: #21262c;
+  $light: #58a6ff;
+  $dark: #161b22;
+  
+  $theme-colors: (
+	primary: $primary,
+	secondary: $secondary,
+	success: $success,
+	info: $info,
+	warning: $warning,
+	danger: $danger,
+	light: $light,
+	dark: $dark,
+  );
+  
+  .four {
+	padding-top: 10em;
+	color: white;
+	text-align: center;
+  }
+  .H1 {
+	font-size: 60px;
+	margin-top: 50px;
+	padding-top: 20vh;
+	padding-left: 5vh;
+	padding-right: 5vh;
+	padding-bottom: 5vh;
+	text-align: center;
+  }
+  
+  .H1v {
+	font-size: 60px;
+	margin-top: 50px;
+	padding-top: 20vh;
+	padding-left: 5vh;
+	padding-right: 5vh;
+	padding-bottom: 5vh;
+	text-align: center;
+	color: white!important;
+  }
+
+  .labletext {
+	  color: white!important;
+  }
+
+  .H5 {
+	font-size: 40px;
+	padding-top: 1vh;
+	padding-left: 5vh;
+	padding-right: 5vh;
+	padding-bottom: 5vh;
+	text-align: center;
+  }
+  .space {
+	padding-bottom: 0%;
+	margin-bottom: 0%;
+	position: absolute;
+	left: 2vh;
+	bottom: 2vh;
+  }
+  
+  .Tide {
+	min-height: 73vh;
+  }
+  .Tid {
+	max-height: 73vh;
+  }
+  .miniT {
+	max-height: 45vh;
+  }
+  
+  .profpic {
+	margin: 10%;
+  }
+  
+  .movieblock {
+	padding-top: 5vh;
+	margin-top: 10vh;
+	padding-left: 10vh;
+	padding-right: 10vh;
+  }
+  
+  .backgroundImage {
+	  object-fit: contain;
+  }
+
+.Log {
+	margin-top: 15vh;
+	margin-left: 15vh!important;
+	margin-right: 15vh!important;
+}
+
+.neat {
+	margin-top: 15vh;
+	margin-left: 20%;
+	margin-right: 20%;
+	color: white;
+}
+.fasize{
+	font-size: 6em!important;
+}
+  .biotext {
+	color: white;
+	background-color: #161b22;
+  }
+  .overlay:hover {
+	transform: scale(1.05);
+	box-shadow: 0 20px 30px rgba(5, 82, 248, 0.142),
+	  0 4px 8px rgba(4, 50, 255, 0.17);
+  }
+  
+  @import "bootstrap/scss/bootstrap.scss";
