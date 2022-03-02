@@ -1,106 +1,152 @@
+@import "bootstrap/scss/bootstrap";
+@import "dropzone";
+@import "masonry";
+
+
+$primary: #21262c;
+$secondary: #fde1b8;
+$success: #e5f5aa;
+$info: #161b22;
+$warning: #f3f0c8;
+$danger: #21262c;
+$light: #58a6ff;
+$dark: #161b22;
+
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
+);
+
+.nav {
+    background-color: $primary !important;
+}
 #App {
-	position: relative;
-	background-color: #161b22;
-	min-height: 100vh;
-  }
-  
-  $primary: #21262c;
-  $secondary: #fde1b8;
-  $success: #e5f5aa;
-  $info: #161b22;
-  $warning: #f3f0c8;
-  $danger: #21262c;
-  $light: #58a6ff;
-  $dark: #161b22;
-  
-  $theme-colors: (
-	primary: $primary,
-	secondary: $secondary,
-	success: $success,
-	info: $info,
-	warning: $warning,
-	danger: $danger,
-	light: $light,
-	dark: $dark,
-  );
-  
-  .four {
-	padding-top: 10em;
-	color: white;
-	text-align: center;
-  }
-  .H1 {
-	font-size: 60px;
-	margin-top: 50px;
-	padding-top: 20vh;
-	padding-left: 5vh;
-	padding-right: 5vh;
-	padding-bottom: 5vh;
-	text-align: center;
-  }
-  
-  .H5 {
-	font-size: 40px;
-	padding-top: 1vh;
-	padding-left: 5vh;
-	padding-right: 5vh;
-	padding-bottom: 5vh;
-	text-align: center;
-  }
-  .space {
-	padding-bottom: 0%;
-	margin-bottom: 0%;
-	position: absolute;
-	left: 2vh;
-	bottom: 2vh;
-  }
-  
-  .Tide {
-	min-height: 73vh;
-  }
-  .Tid {
-	max-height: 73vh;
-  }
-  .miniT {
-	max-height: 45vh;
-  }
-  
-  .profpic {
-	margin: 10%;
-  }
+    background-color: $dark;
+}
 
-  .daku {
-	  color: #58a6ff!important;
-  }
+.form-label {
+    color: white !important;
+}
+.albums {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 2rem 1rem 2rem 1rem;
+    background-color: $dark;
+    color: white;
+}
 
-  me-auto1 {
-	  margin-left: -10vh!important;
-  }
+.albumbg {
+    background-color: $dark;
+    height: 140vh;
+    padding: 5rem 5rem 0rem 5rem;
+}
 
-  .navbar-nav1 {
-	display: flex;
-	flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
-	padding-left: 0;
-	margin-bottom: 0;
-	list-style: none;
-  }
-  
-  .movieblock {
-	padding-top: 5vh;
-	margin-top: 10vh;
-	padding-left: 10vh;
-	padding-right: 10vh;
-  }
-  
-  .biotext {
-	color: white;
-	background-color: #161b22;
-  }
-  .overlay:hover {
-	transform: scale(1.05);
-	box-shadow: 0 20px 30px rgba(5, 82, 248, 0.142),
-	  0 4px 8px rgba(4, 50, 255, 0.17);
-  }
-  
-  @import "bootstrap/scss/bootstrap.scss";
-  
+.albumreview {
+    background-color: $dark;
+    height: 140vh;
+    padding: 5rem 5rem 0rem 5rem;
+    display: flex;
+}
+
+.wlab{
+    color:white;
+}
+
+
+.create-album {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.album-icon {
+    cursor: pointer;
+}
+
+.album-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.album-name-change {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.backgroundImage {
+    object-fit: contain;
+}
+
+.review-link {
+    padding: 0.5rem;
+    border: 2px dashed $light;
+    border-radius: 4px;
+    width: fit-content;
+    margin: auto;
+    cursor: pointer;
+    color: white;
+}
+
+.photo-name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.thumbs {
+    display: flex;
+    justify-content: space-between;
+
+    .green {
+        background-color: green;
+    }
+
+    .red {
+        background-color: red;
+    }
+}
+
+.order {
+    padding: 10rem 15rem 0vh 15rem !important;
+}
+
+.summary {
+    display: flex;
+    color: white;
+
+    p {
+        margin-right: 1rem;
+    }
+}
+
+.review-submited {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+@media only screen and (min-width: 576px) {
+    .albums {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+}
+@media only screen and (min-width: 1200px) {
+    .albums {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+}
