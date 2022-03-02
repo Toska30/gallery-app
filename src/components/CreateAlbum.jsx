@@ -1,69 +1,55 @@
-import React, { useRef } from "react";
-import { Container } from "react-bootstrap";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { db } from "../firebase";
-import { useAuthContext } from "../contexts/AuthContext";
-import useAlbum from "../hooks/useAlbum";
-import { useNavigate } from "react-router-dom";
-import "../App.scss"
+import React, { useRef, useEffect } from 'react'
+import { Form, Button } from 'react-bootstrap'
+import { usePhotoContext } from '../contexts/PhotoContext'
+import useCreateAlbum from '../hooks/useCreateAlbum'
+import { useNavigate } from 'react-router-dom'
 
-const CreateAlbum = (data) => {
-  const { currentUser } = useAuthContext();
-  const albumNameRef = useRef();
-  const navigate = useNavigate();
-  const buildAlbum = useAlbum();
-  const images = data.images;
-  const chooseImages = data.chooseImages;
+const CreateAlbum = ({ title, album}) => {
+    const inputRef = useRef()
+    const navigate = useNavigate()
+    const { createAlbum } = useCreateAlbum();
+    const { chosenPhotos, setChosenPhotos } = usePhotoContext()
 
-  const handleClick = async (e) => {
-    e.preventDefault();
-    if (!albumNameRef.current.value.length) {
-      return;
-    }
-    try {
-      await addDoc(collection(db, "albums"), {
-        title: albumNameRef.current.value,
-        timestamp: serverTimestamp(),
-        owner: currentUser.uid,
-      }).then(function (docRef) {
-        const newAlbum = docRef.id;
-
-        //form an album based on images selected
-        if (chooseImages) {
-          for (var i = 0; i < images.length; i++) {
-            buildAlbum.addAlbum(images[i], newAlbum);
-          }
-          navigate(`/album/${docRef.id}`); //the album in which it will be navigated
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if(!inputRef.current.value) {
+            return
         }
-      });
-    } catch (e) {
-      return;
+        if(album) {
+            if(!chosenPhotos.length) {
+                return
+            }
+            //chere we create an album based on an older album
+            const newAlbum =  await createAlbum(inputRef.current.value, album.owner, chosenPhotos, null, album.thumbnail )
+            inputRef.current.value = "";
+            navigate(`/albums/${newAlbum.id}`)
+            return
+        }
+
+        //"" empty album is created here 
+        createAlbum(inputRef.current.value);
+        inputRef.current.value = "";
     }
-  };
 
-  return (
-    <div className="neat">
-    <Container>
-      <h3>Create a new album</h3>
-      <Form onSubmit={handleClick}>
-        <Form.Group className="mb-3" controlId="formGroupAlbumName">
-          <Form.Label>Name the album</Form.Label>
-          <Form.Control
-            type="text"
-            ref={albumNameRef}
-            placeholder="Give a name to your album"
-            required
-          />
-        </Form.Group>
+    useEffect(() => {
+        return () => {
+          setChosenPhotos([])
+        }
+      }, [])
 
-        <Button type="submit">Create your new album</Button>
-      </Form>
-      
-    </Container>
-    </div>
-  );
-};
+    return (
+        <div>
+            <Form className="create-album" onSubmit={handleSubmit}>
 
-export default CreateAlbum;
+                <Form.Group id="album" className="mb-3">
+                        <Form.Label>{ title }</Form.Label>
+                        <Form.Control type="text" ref={inputRef} required />
+                </Form.Group>
+
+                <Button type="submit">Create</Button>
+            </Form>
+        </div>
+    )
+}
+
+export default CreateAlbum
